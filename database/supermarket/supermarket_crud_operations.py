@@ -1,7 +1,4 @@
-from database.database import Database
 from utils.increment_counter import get_next_sequence
-
-db = Database(database="fetin", collection="supermarket")
 
 
 class CrudProducts:
@@ -28,7 +25,7 @@ class CrudProducts:
             print(f"An error occurred while adding the product: {e}")
             return None
 
-    def read_product(self, search: int, operation_type: str):
+    def read_product(self, search: str, operation_type: str):
         try:
             if operation_type == "read":
                 result = self.db.collection.find({

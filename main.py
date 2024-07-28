@@ -1,12 +1,13 @@
 from database.database import Database
-from database.supermarket.supermarket_database_management import Supermarket
+from database.supermarket.supermarket_database_management import (create_product, read_product, update_product, delete_product)
+from database.manager.manager_database_management import create_manager, read_manager, update_manager, delete_manager
 
 db = Database(database="fetin", collection="supermarket")
-supermarket = Supermarket(db)
 
 
 def clear_screen():
     print("\n" * 50)
+
 
 def show_menu():
     print("1. Supermarket menu")
@@ -27,6 +28,7 @@ def show_supermarket_menu():
 
     return choice
 
+
 def show_manager_menu():
     print("Welcome!")
     print("1. Add a manager")
@@ -40,6 +42,7 @@ def show_manager_menu():
 
     return choice
 
+
 def supermarket_management():
     while True:
         clear_screen()
@@ -49,20 +52,19 @@ def supermarket_management():
 
         match choice:
             case '1':
-                supermarket.create_product()
+                create_product()
                 input("Press Enter to continue...")
 
             case '2':
-                search = input('Search: ')
-                supermarket.read_product(search)
+                read_product()
                 input("Press Enter to continue...")
 
             case '3':
-                supermarket.update_product()
+                update_product()
                 input("Press Enter to continue...")
 
             case '4':
-                supermarket.delete_product()
+                delete_product()
                 input("Press Enter to continue...")
 
             case '5':
@@ -73,6 +75,7 @@ def supermarket_management():
                 print("Invalid choice. Please enter a number between 1 and 5.")
                 input("Press Enter to continue...")
 
+
 def manager_management():
     while True:
         clear_screen()
@@ -82,15 +85,19 @@ def manager_management():
 
         match choice:
             case '1':
+                create_manager()
                 input("Press Enter to continue...")
 
             case '2':
+                read_manager()
                 input("Press Enter to continue...")
 
             case '3':
+                update_manager()
                 input("Press Enter to continue...")
 
             case '4':
+                delete_manager()
                 input("Press Enter to continue...")
 
             case '5':
